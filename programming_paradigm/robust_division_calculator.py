@@ -1,27 +1,19 @@
 def safe_divide(numerator, denominator):
-    """
-    Safely perform division, handling common errors such as division by zero 
-    and non-numeric input.
-
-    Parameters:
-    numerator: The numerator for the division.
-    denominator: The denominator for the division.
-
-    Returns:
-    str: A message indicating the result of the division or the error encountered.
-    """
+    """Performs division with error handling and checks for correct output."""
     try:
         # Convert inputs to floats
-        num = float(numerator)
-        denom = float(denominator)
+        numerator = float(numerator)
+        denominator = float(denominator)
 
-        # Attempt the division
-        result = num / denom
-        return f"The result of the division is {result:.2f}"
+        # Handle division by zero
+        if denominator == 0:
+            return "Error: Cannot divide by zero."
 
-    except ZeroDivisionError:
-        return "Error: Cannot divide by zero."
+        # Perform division and check the result
+        result = numerator / denominator
+        return f"The result of the division is {result}"
 
     except ValueError:
+        # Handle non-numeric inputs
         return "Error: Please enter numeric values only."
 
